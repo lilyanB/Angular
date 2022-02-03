@@ -30,6 +30,7 @@ export class PartageComponent implements OnInit{
     }else{
       this.like--;
       this.buttonTexte = "liker";
+      /* zfesfv */
     }
   }
 }
