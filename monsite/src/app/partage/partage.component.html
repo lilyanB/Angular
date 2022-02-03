@@ -1,0 +1,10 @@
+<div class="photo_partage">
+    <h2>{{ title }}</h2>
+    <p>Mis en ligne le {{ date }}</p>
+    <img [src]="imageURL" [alt]="title">
+    <p>{{ description }}</p>
+    <p>
+        <button (click)="onAddLike()">{{buttonTexte}}</button>
+        nombre de like : {{ like }}
+    </p>
+  </div>
