@@ -1,4 +1,4 @@
-export class Partage {
+/* export class Partage {
     title: string;
     description: string;
     date: Date;
@@ -12,4 +12,13 @@ export class Partage {
       this.date = date;
       this.like = like;
     }
-  }
+  } */
+
+export class Partage {
+    constructor(public title: string,
+                public description: string,
+                public date: Date,
+                public like: number,
+                public imageURL: string,) {
+    }
+}
