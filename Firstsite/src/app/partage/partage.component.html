@@ -1,11 +1,11 @@
-<div class="photo_partage">
-    <h2>{{ partage.title }}</h2>
-    <p>Mis en ligne le {{ partage.date }}</p>
+<div class="photo_partage" [ngClass]="{ photo_partage_clicked: buttonTexte === 'oups, ne pas liker' } ">
+    <h2>{{ partage.title | titlecase}}</h2>
+    <p>Mis en ligne le {{ partage.date | date: 'medium' }}</p>
     <img [src]="partage.imageURL" [alt]="partage.title">
-    <p>{{ partage.description }}</p>
+    <p>{{ partage.description | uppercase}}</p>
     <p *ngIf="partage.location">Photo prise à {{ partage.location }}</p>
     <p>
         <button (click)="onAddLike()">{{buttonTexte}}</button>
-        nombre de like : {{ partage.like }}
+        <span [ngStyle]="{ color: 'rgb(0,' + partage.like + ', 0)'}">nombre de like : {{ partage.like }}</span>
     </p>
   </div>
