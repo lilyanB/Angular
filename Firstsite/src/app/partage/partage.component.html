@@ -3,6 +3,7 @@
     <p>Mis en ligne le {{ partage.date }}</p>
     <img [src]="partage.imageURL" [alt]="partage.title">
     <p>{{ partage.description }}</p>
+    <p *ngIf="partage.location">Photo prise à {{ partage.location }}</p>
     <p>
         <button (click)="onAddLike()">{{buttonTexte}}</button>
         nombre de like : {{ partage.like }}
