@@ -5,11 +5,15 @@ import * as fr from '@angular/common/locales/fr';
 
 import { AppComponent } from './app.component';
 import { PartageComponent } from './partage/partage.component';
+import { PhotoListComponent } from './photo-list/photo-list.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PartageComponent
+    PartageComponent,
+    PhotoListComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule
