@@ -14,7 +14,7 @@ export class PhotoListComponent implements OnInit {
   constructor(private partagephotoservice : partagePhotoService) { }
 
   ngOnInit(): void {
-    this.myphoto = this.partagephotoservice.myphoto
+    this.myphoto = this.partagephotoservice.getAllPhoto();
   }
 
 }

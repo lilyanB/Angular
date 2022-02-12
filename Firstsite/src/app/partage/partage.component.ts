@@ -1,5 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { Partage } from '../models/partage.models';
+import { partagePhotoService } from '../services/partage-photo.services';
 
 @Component({
   selector: 'app-partage',
@@ -10,6 +11,8 @@ export class PartageComponent implements OnInit{
   @Input() partage!: Partage;
   buttonTexte!: string;
 
+  constructor(private partagephotoService: partagePhotoService) {}
+
   ngOnInit(){
     this.buttonTexte = 'liker'
   }
@@ -17,10 +20,10 @@ export class PartageComponent implements OnInit{
   onAddLike() {
     /* this.like++; */
     if(this.buttonTexte === "liker"){
-      this.partage.like++;
+      this.partagephotoService.photoById(this.partage.id, 'like');
       this.buttonTexte = "oups, ne pas liker";
     }else{
-      this.partage.like--;
+      this.partagephotoService.photoById(this.partage.id, 'unlike');
       this.buttonTexte = "liker";
     }
   }

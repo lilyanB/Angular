@@ -7,6 +7,7 @@ import { Partage } from '../models/partage.models';
 export class partagePhotoService {
     myphoto:Partage[] = [
         {
+          id: 1,
           title: "pierre",
           description: "c'est une personne",
           date: new Date(),
@@ -15,6 +16,7 @@ export class partagePhotoService {
           location: 'Paris'
         },
         {
+          id: 2,
           title: "jean",
           description: "c'est une deuxième personne",
           date: new Date(),
@@ -23,6 +25,7 @@ export class partagePhotoService {
           location: 'la montagne'
         },
         {
+          id: 3,
           title: "nicolas",
           description: "c'est une 3ème personne",
           date: new Date(),
@@ -31,4 +34,22 @@ export class partagePhotoService {
         }
   
       ];
+
+    getAllPhoto(): Partage[] {
+      return this.myphoto;
+    }
+
+    getphotoById(photoId: number): Partage {
+      const myphoto = this.myphoto.find(myphoto => myphoto.id === photoId);
+      if (!myphoto) {
+          throw new Error('photo not found!');
+      } else {
+          return myphoto;
+      }
+    }
+
+    photoById(photoId: number, photoType: 'like' | 'unlike'): void {
+      const myphoto = this.getphotoById(photoId);
+      photoType === 'like' ? myphoto.like++ : myphoto.like--;
+    }
 }
