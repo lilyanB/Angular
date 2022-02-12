@@ -3,7 +3,7 @@
     <p>{{ 0.336 | percent: '1.0-1' }}</p>
     <p>{{ 344.36 | currency: 'EUR' : 'code' }}</p>
     <h2>{{ partage.title | titlecase}}</h2>
-    <a routerLink="/photopartage">Back</a>
+    <button routerLink="/photopartage">Back</button>
     <p>Mis en ligne le {{ partage.date | date: 'medium' }}</p>
     <img [src]="partage.imageURL" [alt]="partage.title">
     <p>{{ partage.description | uppercase}}</p>
