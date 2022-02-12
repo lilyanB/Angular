@@ -1,22 +1,24 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Partage } from '../models/partage.models';
 import { partagePhotoService } from '../services/partage-photo.services';
 
 @Component({
-  selector: 'app-partage',
-  templateUrl: './partage.component.html',
-  styleUrls: ['./partage.component.scss']
+  selector: 'app-single-photo',
+  templateUrl: './single-photo.component.html',
+  styleUrls: ['./single-photo.component.scss']
 })
-export class PartageComponent implements OnInit{
-  @Input() partage!: Partage;
+export class SinglePhotoComponent implements OnInit {
+  partage!: Partage;
   buttonTexte!: string;
 
   constructor(private partagephotoService: partagePhotoService,
-              private router: Router) {}
+              private route: ActivatedRoute) {}
 
   ngOnInit(){
-    this.buttonTexte = 'liker'
+    this.buttonTexte = 'liker';
+    const photoid = +this.route.snapshot.params['id'];
+    this.partage = this.partagephotoService.getphotoById(photoid)
   }
 
   onAddLike() {
@@ -28,10 +30,5 @@ export class PartageComponent implements OnInit{
       this.partagephotoService.photoById(this.partage.id, 'unlike');
       this.buttonTexte = "liker";
     }
-  }
-
-  onViewPhoto(){
-    this.router.navigateByUrl(`photo/${this.partage.id}`)
-
   }
 }

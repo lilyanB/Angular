@@ -9,6 +9,7 @@ import { PhotoListComponent } from './photo-list/photo-list.component';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { SinglePhotoComponent } from './single-photo/single-photo.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     PartageComponent,
     PhotoListComponent,
     HeaderComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    SinglePhotoComponent
   ],
   imports: [
     BrowserModule,
