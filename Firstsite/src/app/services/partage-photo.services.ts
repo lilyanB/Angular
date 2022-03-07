@@ -52,4 +52,15 @@ export class partagePhotoService {
       const myphoto = this.getphotoById(photoId);
       photoType === 'like' ? myphoto.like++ : myphoto.like--;
     }
+
+    addphoto(formValue: { title: string, description: string, imageURL: string, location?: string }) {
+      const partage: Partage = {
+          ...formValue,
+          like: 0,
+          date: new Date(),
+          id: this.myphoto[this.myphoto.length - 1].id + 1
+      };
+      this.myphoto.push(partage);
+  }
+
 }

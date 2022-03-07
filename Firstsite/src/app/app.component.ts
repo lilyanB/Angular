@@ -35,7 +35,7 @@ export class AppComponent implements OnInit{
     console.log(`Log: ${text}`);
   } */
 
-  interval(500).pipe(
+/*   interval(500).pipe(
     take(10),
     map(value => value % 2 === 0 ? 'rouge' : 'jaune'),
     tap(color => console.log(`La lumière s'allume en %c${color}`, `color: ${this.translateColor(color)}`)),
@@ -55,8 +55,8 @@ export class AppComponent implements OnInit{
   }
 
   translateColor(color: 'rouge' | 'jaune') {
-    return color === 'rouge' ? 'red' : 'yellow';
+    return color === 'rouge' ? 'red' : 'yellow';*/
   }
-
+ 
 
 }

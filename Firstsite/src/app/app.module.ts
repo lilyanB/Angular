@@ -10,6 +10,8 @@ import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { SinglePhotoComponent } from './single-photo/single-photo.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NewPartageComponent } from './new-partage/new-partage.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +20,14 @@ import { SinglePhotoComponent } from './single-photo/single-photo.component';
     PhotoListComponent,
     HeaderComponent,
     LandingPageComponent,
-    SinglePhotoComponent
+    SinglePhotoComponent,
+    NewPartageComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR'}
