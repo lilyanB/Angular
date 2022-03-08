@@ -1,19 +1,16 @@
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { registerLocaleData } from '@angular/common';
-import * as fr from '@angular/common/locales/fr';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { PartageComponent } from './partage/partage.component';
 import { PhotoListComponent } from './photo-list/photo-list.component';
-import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { SinglePhotoComponent } from './single-photo/single-photo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewPartageComponent } from './new-partage/new-partage.component';
-import { httpInterceptorProviders } from './interceptors';
+import { CoreModule } from './core/core.module';
 
 
 @NgModule({
@@ -21,7 +18,6 @@ import { httpInterceptorProviders } from './interceptors';
     AppComponent,
     PartageComponent,
     PhotoListComponent,
-    HeaderComponent,
     LandingPageComponent,
     SinglePhotoComponent,
     NewPartageComponent
@@ -31,16 +27,9 @@ import { httpInterceptorProviders } from './interceptors';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
-  ],
-  providers: [
-    { provide: LOCALE_ID, useValue: 'fr-FR'},
-    httpInterceptorProviders
+    HttpClientModule,
+    CoreModule
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-  constructor() {
-    registerLocaleData(fr.default);
-  }
- }
+export class AppModule {}

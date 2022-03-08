@@ -1,7 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { Router } from '@angular/router';
-import { Partage } from '../models/partage.models';
-import { partagePhotoService } from '../services/partage-photo.services';
+import { Partage } from '../core/models/partage.models';
+import { partagePhotoService } from '../core/services/partage-photo.services';
 
 @Component({
   selector: 'app-partage',

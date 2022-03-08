@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, switchMap } from 'rxjs';
 import { Partage } from '../models/partage.models';
-import { PhotoListComponent } from '../photo-list/photo-list.component';
 
 @Injectable({
   providedIn: 'root'
