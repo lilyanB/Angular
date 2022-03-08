@@ -1,1 +1,2 @@
-<app-partage *ngFor="let elements of myphoto" [partage]="elements"></app-partage>
+<!-- <app-partage *ngFor="let elements of myphoto" [partage]="elements"></app-partage> -->
+<app-partage *ngFor="let elements of myphoto$ | async" [partage]="elements"></app-partage>

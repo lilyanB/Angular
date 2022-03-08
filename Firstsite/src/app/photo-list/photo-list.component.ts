@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { interval, Subject, take, takeUntil, tap } from 'rxjs';
+import { interval, Observable, Subject, take, takeUntil, tap } from 'rxjs';
 import { Partage } from '../models/partage.models';
 import { partagePhotoService } from '../services/partage-photo.services';
 
@@ -10,7 +10,8 @@ import { partagePhotoService } from '../services/partage-photo.services';
 })
 export class PhotoListComponent implements OnInit, OnDestroy {
 
-  myphoto!: Partage[];
+  //myphoto!: Partage[];
+  myphoto$!: Observable<Partage[]>;
   private destroy$!: Subject<boolean>
 
   constructor(private partagephotoservice : partagePhotoService) { }
@@ -18,7 +19,8 @@ export class PhotoListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     this.destroy$ = new Subject<boolean>();
-    this.myphoto = this.partagephotoservice.getAllPhoto();
+    //this.myphoto = this.partagephotoservice.getAllPhoto();
+    this.myphoto$ = this.partagephotoservice.getAllPhoto();
 
     /* interval(1000).pipe(
       take(2),

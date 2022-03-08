@@ -1,11 +1,19 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map, Observable, switchMap } from 'rxjs';
 import { Partage } from '../models/partage.models';
+import { PhotoListComponent } from '../photo-list/photo-list.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class partagePhotoService {
-    myphoto:Partage[] = [
+
+  constructor(private http: HttpClient){}
+
+
+  myphoto:Partage[] = []
+    /* myphoto:Partage[] = [
         {
           id: 1,
           title: "pierre",
@@ -33,34 +41,57 @@ export class partagePhotoService {
           imageURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Alpamayo.jpg/330px-Alpamayo.jpg",
         }
   
-      ];
+      ]; */
 
-    getAllPhoto(): Partage[] {
+    /* getAllPhoto(): Partage[] {
       return this.myphoto;
+    } */
+
+    getAllPhoto(): Observable<Partage[]> {
+      return this.http.get<Partage[]>('http://localhost:3000/facesnaps');
     }
 
-    getphotoById(photoId: number): Partage {
-      const myphoto = this.myphoto.find(myphoto => myphoto.id === photoId);
+    getphotoById(photoId: number): Observable<Partage> {
+      /* const myphoto = this.myphoto.find(myphoto => myphoto.id === photoId);
       if (!myphoto) {
           throw new Error('photo not found!');
       } else {
           return myphoto;
-      }
+      } */
+      return this.http.get<Partage>(`http://localhost:3000/facesnaps/${photoId}`)
     }
 
-    photoById(photoId: number, photoType: 'like' | 'unlike'): void {
-      const myphoto = this.getphotoById(photoId);
-      photoType === 'like' ? myphoto.like++ : myphoto.like--;
+    photoById(photoId: number, photoType: 'like' | 'unlike'): Observable<Partage> {
+      /* const myphoto = this.getphotoById(photoId);
+      photoType === 'like' ? myphoto.like++ : myphoto.like--; */
+      return this.getphotoById(photoId).pipe(
+        map(photo =>({
+          ...photo,
+          like: photo.like + (photoType === 'like' ? 1 : -1)
+        })),
+        switchMap(updatephoto => this.http.put<Partage>(`http://localhost:3000/facesnaps/${photoId}`, updatephoto))
+      )
     }
 
-    addphoto(formValue: { title: string, description: string, imageURL: string, location?: string }) {
-      const partage: Partage = {
+    addphoto(formValue: { title: string, description: string, imageURL: string, location?: string }): Observable<Partage> {
+      /* const partage: Partage = {
           ...formValue,
           like: 0,
           date: new Date(),
           id: this.myphoto[this.myphoto.length - 1].id + 1
       };
-      this.myphoto.push(partage);
+      this.myphoto.push(partage); */
+      return this.getAllPhoto().pipe(
+        map(photo => [...photo].sort((a : Partage, b: Partage) => a.id - b.id)),
+        map(sortedPhoto => sortedPhoto[sortedPhoto.length -1]),
+        map(previousphoto => ({
+          ...formValue,
+          like: 0,
+          date: new Date(),
+          id: previousphoto.id +1
+        })),
+        switchMap(newphoto => this.http.post<Partage>('http://localhost:3000/facesnaps', newphoto))
+      )
   }
 
 }

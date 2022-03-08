@@ -1,5 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable, tap } from 'rxjs';
 import { Partage } from '../models/partage.models';
 import { partagePhotoService } from '../services/partage-photo.services';
 
@@ -9,7 +10,8 @@ import { partagePhotoService } from '../services/partage-photo.services';
   styleUrls: ['./single-photo.component.scss']
 })
 export class SinglePhotoComponent implements OnInit {
-  partage!: Partage;
+  //partage!: Partage;
+  partage$!: Observable<Partage>;
   buttonTexte!: string;
 
   constructor(private partagephotoService: partagePhotoService,
@@ -18,17 +20,29 @@ export class SinglePhotoComponent implements OnInit {
   ngOnInit(){
     this.buttonTexte = 'liker';
     const photoid = +this.route.snapshot.params['id'];
-    this.partage = this.partagephotoService.getphotoById(photoid)
+    this.partage$ = this.partagephotoService.getphotoById(photoid)
   }
 
-  onAddLike() {
-    /* this.like++; */
+  onAddLike(partageid : number) {
+    /* this.like++;
     if(this.buttonTexte === "liker"){
       this.partagephotoService.photoById(this.partage.id, 'like');
       this.buttonTexte = "oups, ne pas liker";
     }else{
       this.partagephotoService.photoById(this.partage.id, 'unlike');
       this.buttonTexte = "liker";
+    } */
+    if(this.buttonTexte === "liker"){
+      this.partage$ = this.partagephotoService.photoById(partageid, 'like').pipe(
+        tap(() => this.buttonTexte = "oups, ne pas liker")
+      )
+    }else{
+      this.partagephotoService.photoById(partageid, 'unlike').pipe(
+        tap(() => {
+          this.partage$ = this.partagephotoService.getphotoById(partageid)
+          this.buttonTexte = "liker";
+        })
+      ).subscribe();
     }
   }
 }

@@ -2,6 +2,7 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { registerLocaleData } from '@angular/common';
 import * as fr from '@angular/common/locales/fr';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { PartageComponent } from './partage/partage.component';
@@ -12,6 +13,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { SinglePhotoComponent } from './single-photo/single-photo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewPartageComponent } from './new-partage/new-partage.component';
+import { httpInterceptorProviders } from './interceptors';
+
 
 @NgModule({
   declarations: [
@@ -27,10 +30,12 @@ import { NewPartageComponent } from './new-partage/new-partage.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'fr-FR'}
+    { provide: LOCALE_ID, useValue: 'fr-FR'},
+    httpInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })

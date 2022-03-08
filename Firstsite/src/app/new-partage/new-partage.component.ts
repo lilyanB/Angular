@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { map, Observable } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { Partage } from '../models/partage.models';
 import { partagePhotoService } from '../services/partage-photo.services';
 
@@ -40,10 +40,13 @@ export class NewPartageComponent implements OnInit {
     )
   }
 
-  onSubmitForm(): void {
-    /* console.log(this.photoForm.value); */
+  onSubmitForm()/*:  void */ {
+    /* console.log(this.photoForm.value); 
     this.partagePhotoService.addphoto(this.photoForm.value);
-    this.router.navigateByUrl('/photopartage')
+    this.router.navigateByUrl('/photopartage')*/
+    this.partagePhotoService.addphoto(this.photoForm.value).pipe(
+      tap(() => this.router.navigateByUrl('photopartage'))
+    ).subscribe()
 }
 
 }

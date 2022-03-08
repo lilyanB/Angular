@@ -1,4 +1,4 @@
-<div class="photo_partage" [ngClass]="{ photo_partage_clicked: buttonTexte === 'oups, ne pas liker' } ">
+<div class="photo_partage" *ngIf="partage$ | async as partage" [ngClass]="{ photo_partage_clicked: buttonTexte === 'oups, ne pas liker' } ">
     <p>{{ 4346234.36 | number: '1.0-1' }}</p>
     <p>{{ 0.336 | percent: '1.0-1' }}</p>
     <p>{{ 344.36 | currency: 'EUR' : 'code' }}</p>
@@ -9,7 +9,7 @@
     <p>{{ partage.description | uppercase}}</p>
     <p *ngIf="partage.location">Photo prise à {{ partage.location }}</p>
     <p>
-        <button (click)="onAddLike()">{{buttonTexte}}</button>
+        <button (click)="onAddLike(partage.id)">{{buttonTexte}}</button>
         <span [ngStyle]="{ color: 'rgb(0,' + partage.like + ', 0)'}">nombre de like : {{ partage.like }}</span>
     </p>
 </div>
