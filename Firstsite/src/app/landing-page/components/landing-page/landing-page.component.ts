@@ -11,7 +11,7 @@ export class LandingPageComponent implements OnInit {
 
   userEmail: String = 'pardefault@mail.com'
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
   }
