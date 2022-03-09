@@ -1,8 +1,8 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, tap } from 'rxjs';
-import { Partage } from '../core/models/partage.models';
-import { partagePhotoService } from '../core/services/partage-photo.services';
+import { Partage } from 'src/app/core/models/partage.models';
+import { partagePhotoService } from 'src/app/core/services/partage-photo.services';
 
 @Component({
   selector: 'app-single-photo',

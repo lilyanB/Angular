@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map, Observable, tap } from 'rxjs';
-import { Partage } from '../core/models/partage.models';
-import { partagePhotoService } from '../core/services/partage-photo.services';
+import { Partage } from '../../../core/models/partage.models';
+import { partagePhotoService } from '../../../core/services/partage-photo.services';
 
 @Component({
   selector: 'app-new-partage',

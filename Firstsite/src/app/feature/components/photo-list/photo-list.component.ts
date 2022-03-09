@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { interval, Observable, Subject, take, takeUntil, tap } from 'rxjs';
-import { Partage } from '../core/models/partage.models';
-import { partagePhotoService } from '../core/services/partage-photo.services';
+import { Partage } from 'src/app/core/models/partage.models';
+import { partagePhotoService } from 'src/app/core/services/partage-photo.services';
 
 @Component({
   selector: 'app-photo-list',

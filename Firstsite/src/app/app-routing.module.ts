@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PhotoListComponent } from './photo-list/photo-list.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { SinglePhotoComponent } from './single-photo/single-photo.component';
-import { NewPartageComponent } from './new-partage/new-partage.component';
+import { NewPartageComponent } from './feature/components/new-partage/new-partage.component';
+import { SinglePhotoComponent } from './feature/components/single-photo/single-photo.component';
+import { PhotoListComponent } from './feature/components/photo-list/photo-list.component';
 
 const routes: Routes = [
     { path: 'photo/:id', component: SinglePhotoComponent },
