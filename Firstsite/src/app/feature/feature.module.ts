@@ -5,7 +5,7 @@ import { PhotoListComponent } from './components/photo-list/photo-list.component
 import { SinglePhotoComponent } from './components/single-photo/single-photo.component';
 import { NewPartageComponent } from './components/new-partage/new-partage.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { featureRoutingModule } from './feature-routing.module';
 
 
 
@@ -19,7 +19,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule
+    featureRoutingModule
   ],exports: [
     PartageComponent,
     PhotoListComponent,    

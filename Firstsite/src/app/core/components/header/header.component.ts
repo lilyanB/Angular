@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onAddNewPartage(): void {
-    this.router.navigateByUrl('/create')
+    this.router.navigateByUrl('/photo/create')
   }
 
 }
