@@ -17,7 +17,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   onContinue(): void{
-    this.router.navigateByUrl('photopartage');
+    this.router.navigateByUrl('photo');
   }
 
   onSubmitForm(form: NgForm) {
