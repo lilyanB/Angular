@@ -1,0 +1,6 @@
+<div class="photo_partage" *ngFor="let elements of myemployee | async">
+    <h2>{{ elements.firstName | titlecase}}</h2>
+    <p>{{ elements.lastName | uppercase}}</p>
+    <p>{{ elements.emailId | uppercase}}</p>
+    <button (click)="onViewEmployee(elements.id)">View</button>
+</div>
