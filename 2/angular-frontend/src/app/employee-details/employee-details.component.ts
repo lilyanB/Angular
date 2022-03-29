@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from '../models/tableau.models';
 import { TableauEmployeeService } from '../services/tableau-employee.service';
 
@@ -13,7 +13,9 @@ export class EmployeeDetailsComponent implements OnInit {
   id!: number
   employee!: Employee
 
-  constructor(private route: ActivatedRoute, private TableauEmployeeService: TableauEmployeeService) { }
+  constructor(private route: ActivatedRoute,
+              private TableauEmployeeService: TableauEmployeeService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -22,6 +24,10 @@ export class EmployeeDetailsComponent implements OnInit {
     this.TableauEmployeeService.getEmployeeById(this.id).subscribe( data => {
       this.employee = data;
     });
+  }
+
+  updateEmployee( id: Number){
+    this.router.navigateByUrl(`update/${id}`)
   }
 
 }

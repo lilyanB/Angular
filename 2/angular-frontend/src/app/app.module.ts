@@ -10,6 +10,7 @@ import { CreateEmployeeComponent } from './create-employee/create-employee.compo
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
+import { EmployeeUpdateComponent } from './employee-update/employee-update.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { EmployeeDetailsComponent } from './employee-details/employee-details.co
     EmployeeListComponent,
     CreateEmployeeComponent,
     FooterComponent,
-    EmployeeDetailsComponent
+    EmployeeDetailsComponent,
+    EmployeeUpdateComponent
   ],
   imports: [
     FormsModule,
